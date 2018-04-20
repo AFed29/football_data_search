@@ -35,14 +35,12 @@ LeagueTableView.prototype.renderTable = function (tableData) {
   headings.appendChild(gamesLostHeading);
 
   const goalDifferenceHeading = document.createElement('th');
-  goalDifferenceHeading.textContent = "Goal Difference";
+  goalDifferenceHeading.textContent = "+/-";
   headings.appendChild(goalDifferenceHeading);
 
   const pointsHeading = document.createElement('th');
   pointsHeading.textContent = "Points";
   headings.appendChild(pointsHeading);
-
-console.log(tableData);
 
   tableData.standing.forEach((team) => {
     const row = document.createElement('tr');
