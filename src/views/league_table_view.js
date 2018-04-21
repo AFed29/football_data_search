@@ -10,78 +10,40 @@ LeagueTableView.prototype.renderTable = function (tableData) {
   const headings = document.createElement('tr');
   table.appendChild(headings);
 
-  const standingHeading = document.createElement('th');
-  standingHeading.textContent = "Standing";
-  headings.appendChild(standingHeading);
-
-  const teamNameHeading = document.createElement('th');
-  teamNameHeading.textContent = "Team Name";
-  headings.appendChild(teamNameHeading);
-
-  const gamesPlayedHeading = document.createElement('th');
-  gamesPlayedHeading.textContent = "Played";
-  headings.appendChild(gamesPlayedHeading);
-
-  const gamesWonHeading = document.createElement('th');
-  gamesWonHeading.textContent = "Won";
-  headings.appendChild(gamesWonHeading);
-
-  const gamesDrawnHeading = document.createElement('th');
-  gamesDrawnHeading.textContent = "Drawn";
-  headings.appendChild(gamesDrawnHeading);
-
-  const gamesLostHeading = document.createElement('th');
-  gamesLostHeading.textContent = "Lost";
-  headings.appendChild(gamesLostHeading);
-
-  const goalDifferenceHeading = document.createElement('th');
-  goalDifferenceHeading.textContent = "+/-";
-  headings.appendChild(goalDifferenceHeading);
-
-  const pointsHeading = document.createElement('th');
-  pointsHeading.textContent = "Points";
-  headings.appendChild(pointsHeading);
+  createTableHeading("Standing", headings);
+  createTableHeading("Team Name", headings);
+  createTableHeading("Played", headings);
+  createTableHeading("Won", headings);
+  createTableHeading("Drawn", headings);
+  createTableHeading("Lost", headings);
+  createTableHeading("+/-", headings);
+  createTableHeading("Points", headings);
 
   tableData.standing.forEach((team) => {
     const row = document.createElement('tr');
     table.appendChild(row);
 
-    const standing = document.createElement('td');
-    standing.textContent = team.position;
-    row.appendChild(standing);
-
-    const teamName = document.createElement('td');
-    teamName.textContent = team.teamName;
-    row.appendChild(teamName);
-
-    const gamesPlayed = document.createElement('td');
-    gamesPlayed.textContent = team.playedGames;
-    row.appendChild(gamesPlayed);
-
-    const gamesWon = document.createElement('td');
-    gamesWon.textContent = team.wins;
-    row.appendChild(gamesWon);
-
-    const gamesDrawn = document.createElement('td');
-    gamesDrawn.textContent = team.draws;
-    row.appendChild(gamesDrawn);
-
-    const gamesLost = document.createElement('td');
-    gamesLost.textContent = team.losses;
-    row.appendChild(gamesLost);
-
-    const goalDifference = document.createElement('td');
-    goalDifference.textContent = team.goalDifference;
-    row.appendChild(goalDifference);
-
-    const points = document.createElement('td');
-    points.textContent = team.points;
-    row.appendChild(points);
-
-  })
-
-
-
+    createTableData(team.position, row);
+    createTableData(team.teamName, row);
+    createTableData(team.playedGames, row);
+    createTableData(team.wins, row);
+    createTableData(team.draws, row);
+    createTableData(team.losses, row);
+    createTableData(team.goalDifference, row);
+    createTableData(team.points, row);
+  });
 };
+
+const createTableHeading = function (headingName, headingsRow) {
+  const heading = document.createElement('th');
+  heading.textContent = headingName;
+  headingsRow.appendChild(heading);
+}
+
+const createTableData = function (data, row) {
+  const tableData = document.createElement('td');
+  tableData.textContent = data;
+  row.appendChild(tableData);
+}
 
 module.exports = LeagueTableView;

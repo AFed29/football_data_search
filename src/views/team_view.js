@@ -8,13 +8,8 @@ TeamView.prototype.renderList = function (teamData) {
     const teamDataList = document.createElement('ul');
     this.container.appendChild(teamDataList);
 
-    const teamName = document.createElement('li');
-    teamName.textContent = team.name;
-    teamDataList.appendChild(teamName);
-
-    const teamNickname = document.createElement('li');
-    teamNickname.textContent = team.shortName;
-    teamDataList.appendChild(teamNickname);
+    createListItem(team.name, teamDataList);
+    createListItem(team.shortName, teamDataList);
 
     if (team.crestUrl !== null) {
       const teamCrest = document.createElement('img');
@@ -24,5 +19,12 @@ TeamView.prototype.renderList = function (teamData) {
     }
   })
 };
+
+const createListItem = function (data, parentList) {
+  const listItem = document.createElement('li');
+  listItem.textContent = data;
+  parentList.appendChild(listItem);
+
+}
 
 module.exports = TeamView;
