@@ -24,7 +24,6 @@ const createListItem = function (data, parentList) {
   const listItem = document.createElement('li');
   listItem.textContent = data;
   parentList.appendChild(listItem);
-
 }
 
 module.exports = TeamView;
