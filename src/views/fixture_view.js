@@ -33,6 +33,7 @@ FixtureView.prototype.renderSelect = function (data) {
 FixtureView.prototype.renderList = function (fixtureType) {
   const prettyDate = new PrettyDate();
   this.dataContainer.innerHTML = ''
+  this.dataContainer
   const fixtures = getFixtures(this.data, fixtureType);
   console.log(fixtures);
   fixtures.forEach((fixture) => {
@@ -45,6 +46,10 @@ FixtureView.prototype.renderList = function (fixtureType) {
         createListItem(`${fixture.result.goalsHomeTeam} - ${fixture.result.goalsAwayTeam}`, fixtureDataList);
       }
   })
+};
+
+FixtureView.prototype.removeSelect = function () {
+  this.selectContainer.innerHTML ='';
 };
 
 

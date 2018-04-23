@@ -47,18 +47,20 @@ const renderDataWhenSelected = function (competitionID, searchTerm, dataHandler)
   if (competitionID !== null && searchTerm !== null) {
     switch (searchTerm) {
       case 'teams':
+        fixtureView.removeSelect();
         dataHandler.getData(competitionID, searchTerm, (data) => {
           teamView.renderList(data)
         });
         break;
       case 'leagueTable':
+        fixtureView.removeSelect();
         dataHandler.getData(competitionID, searchTerm, (data) => {
           leagueTableView.renderTable(data)
         });
         break;
       case 'fixtures':
         dataHandler.getData(competitionID, searchTerm, (data) => {
-            const fixtureSelect = fixtureView.renderSelect(data);
+          const fixtureSelect = fixtureView.renderSelect(data);
           fixtureSelect.addEventListener('change', (event) => {
             fixtureView.renderList(event.target.value);
           });
