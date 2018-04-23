@@ -31,7 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
     competitionView.renderSelect(data);
   });
 
-
   competitionSelect.addEventListener('change', (event) => {
     competitionID = event.target.value;
     renderDataWhenSelected(competitionID, searchTerm, dataHandler);
@@ -66,8 +65,6 @@ const renderDataWhenSelected = function (competitionID, searchTerm, dataHandler)
           });
         })
         break;
-      default:
-
     }
   }
 }

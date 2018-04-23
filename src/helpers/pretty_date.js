@@ -1,6 +1,4 @@
-const PrettyDate = function () {
-
-}
+const PrettyDate = function () {}
 
 PrettyDate.prototype.format = function (dateString) {
   const date = new Date(dateString);
