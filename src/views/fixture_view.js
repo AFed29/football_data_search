@@ -35,7 +35,6 @@ FixtureView.prototype.renderList = function (fixtureType) {
   this.dataContainer.innerHTML = ''
   this.dataContainer
   const fixtures = getFixtures(this.data, fixtureType);
-  console.log(fixtures);
   fixtures.forEach((fixture) => {
       const fixtureDataList = document.createElement('ul');
       this.dataContainer.appendChild(fixtureDataList);
