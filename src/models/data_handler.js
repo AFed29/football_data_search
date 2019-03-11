@@ -6,7 +6,7 @@ const DataHandler = function () {
 }
 
 DataHandler.prototype.getData = function (competitionID, searchTerm, onComplete) {
-  this.url = `https://api.football-data.org/v1/competitions/${competitionID}/${searchTerm}`;
+  this.url = `https://api.football-data.org/v2/competitions/${competitionID}/${searchTerm}`;
   const request = new Request(this.url);
   request.get((data) => {
     this.data = data;

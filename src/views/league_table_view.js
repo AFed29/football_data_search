@@ -19,18 +19,20 @@ LeagueTableView.prototype.renderTable = function (tableData) {
   createTableHeading("+/-", headings);
   createTableHeading("Points", headings);
 
-  tableData.standing.forEach((team) => {
+  debugger;
+
+  tableData.standings[0].table.forEach((standing) => {
     const row = document.createElement('tr');
     table.appendChild(row);
 
-    createTableData(team.position, row);
-    createTableData(team.teamName, row);
-    createTableData(team.playedGames, row);
-    createTableData(team.wins, row);
-    createTableData(team.draws, row);
-    createTableData(team.losses, row);
-    createTableData(team.goalDifference, row);
-    createTableData(team.points, row);
+    createTableData(standing.position, row);
+    createTableData(standing.team.name, row);
+    createTableData(standing.playedGames, row);
+    createTableData(standing.won, row);
+    createTableData(standing.draw, row);
+    createTableData(standing.lost, row);
+    createTableData(standing.goalDifference, row);
+    createTableData(standing.points, row);
   });
 };
 

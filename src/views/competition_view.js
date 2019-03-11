@@ -3,9 +3,9 @@ const CompetitionView =  function (selectElement) {
 }
 
 CompetitionView.prototype.renderSelect = function (competitionData) {
-  competitionData.forEach((competition) => {
+  competitionData.competitions.forEach((competition) => {
     const competitionOption = document.createElement('option')
-    competitionOption.textContent = competition.caption;
+    competitionOption.textContent = competition.name;
     competitionOption.value = competition.id;
     this.selectElement.appendChild(competitionOption);
   })

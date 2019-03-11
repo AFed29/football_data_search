@@ -1,7 +1,6 @@
 const CompetitionData = require('./models/competition_data.js');
 const DataHandler = require('./models/data_handler.js');
 const CompetitionView = require('./views/competition_view.js');
-const TeamView = require('./views/team_view.js');
 const LeagueTableView = require('./views/league_table_view.js');
 const FixtureView = require('./views/fixture_view.js');
 
@@ -20,7 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const dataDiv = document.querySelector('#data-div');
 
   const competitionView = new CompetitionView(competitionSelect);
-  teamView = new TeamView(dataDiv);
   leagueTableView = new LeagueTableView(dataDiv);
   fixtureView = new FixtureView(selectDiv, dataDiv);
 
@@ -45,19 +43,13 @@ document.addEventListener('DOMContentLoaded', () => {
 const renderDataWhenSelected = function (competitionID, searchTerm, dataHandler) {
   if (competitionID !== null && searchTerm !== null) {
     switch (searchTerm) {
-      case 'teams':
-        fixtureView.removeSelect();
-        dataHandler.getData(competitionID, searchTerm, (data) => {
-          teamView.renderList(data)
-        });
-        break;
-      case 'leagueTable':
+      case 'standings':
         fixtureView.removeSelect();
         dataHandler.getData(competitionID, searchTerm, (data) => {
           leagueTableView.renderTable(data)
         });
         break;
-      case 'fixtures':
+      case 'matches':
         dataHandler.getData(competitionID, searchTerm, (data) => {
           const fixtureSelect = fixtureView.renderSelect(data);
           fixtureSelect.addEventListener('change', (event) => {

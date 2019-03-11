@@ -1,7 +1,7 @@
 const Request = require('../helpers/request.js');
 
 const CompetitionData = function () {
-  this.url = 'https://api.football-data.org/v1/competitions'
+  this.url = 'https://api.football-data.org/v2/competitions?plan=TIER_ONE'
   this.data = null;
 }
 

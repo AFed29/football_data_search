@@ -38,11 +38,12 @@ FixtureView.prototype.renderList = function (fixtureType) {
   fixtures.forEach((fixture) => {
       const fixtureDataList = document.createElement('ul');
       this.dataContainer.appendChild(fixtureDataList);
+      debugger;
 
-      createListItem(prettyDate.format(fixture.date), fixtureDataList);
-      createListItem(`${fixture.homeTeamName} vs ${fixture.awayTeamName}`, fixtureDataList);
-      if (fixture.result.goalsHomeTeam !== null && fixture.result.goalsAwayTeam !== null) {
-        createListItem(`${fixture.result.goalsHomeTeam} - ${fixture.result.goalsAwayTeam}`, fixtureDataList);
+      createListItem(prettyDate.format(fixture.utcDate), fixtureDataList);
+      createListItem(`${fixture.homeTeam.name} vs ${fixture.awayTeam.name}`, fixtureDataList);
+      if (fixture.score.fullTime.homeTeam !== null && fixture.score.fullTime.awayTeam !== null) {
+        createListItem(`${fixture.score.fullTime.homeTeam} - ${fixture.score.fullTime.awayTeam}`, fixtureDataList);
       }
   })
 };
@@ -61,12 +62,12 @@ const createListItem = function (data, parentList) {
 const getFixtures = function (data, fixtureType) {
   let fixtures = null;
   if (fixtureType === 'Results') {
-    fixtures = data.fixtures.filter((fixture) => {
+    fixtures = data.matches.filter((fixture) => {
       return (fixture.status === 'FINISHED');
     })
     fixtures.reverse();
   } else {
-    fixtures = data.fixtures.filter((fixture) => {
+    fixtures = data.matches.filter((fixture) => {
       return (fixture.status !== 'FINISHED' && fixture.status !== 'POSTPONED');
     })
   }
